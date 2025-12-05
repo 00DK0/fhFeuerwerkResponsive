@@ -1,0 +1,368 @@
+/* =========================================
+   1. Variablen & Grundeinstellungen
+   ========================================= */
+:root {
+  --background-color: #17191f;
+  --background-color-trans: #17191fE6;
+  --backgroundColorTransGradiant: linear-gradient(to bottom, rgba(23, 25, 31, 1) 75%, rgba(23, 25, 31, 0) 100%);
+  --accentYellow: #ff6600; 
+  --accentOrange: #ff6600;
+  --accentWhite: #f5f5f5;
+  --font-main: "myFont", sans-serif;
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url("../fonts/monbaiti.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--accentWhite);
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Bild-Handling Global: Verhindert, dass Bilder den Rahmen sprengen */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Entfernt kleine Lücken unter Bildern */
+}
+
+a {
+  color: var(--accentWhite);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accentOrange);
+}
+
+.cta-button, .link-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--accentOrange);
+  color: var(--accentOrange);
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-button:hover, .link-btn:hover {
+  background-color: var(--accentOrange);
+  color: var(--accentWhite);
+}
+
+/* =========================================
+   2. Header & Navigation (Mobile First)
+   ========================================= */
+header {
+    background: var(--backgroundColorTransGradiant);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 5%;
+}
+
+/* Logo & Branding Area */
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10001; /* Über dem Menü */
+}
+
+.header-logo {
+    width: 50px; /* Logo-Größe für Mobile */
+    height: auto;
+}
+
+#name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Hamburger Button */
+.mobile-menu-toggle {
+    display: block; 
+    position: absolute;
+    top: 1.5rem;
+    right: 5%;
+    z-index: 10000;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+.bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accentWhite);
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: all 0.4s ease;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+    background-color: var(--accentOrange);
+}
+.mobile-menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+}
+.mobile-menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+    background-color: var(--accentOrange);
+}
+
+/* Navigation List */
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    inset: 0 0 0 30%;
+    background-color: var(--background-color);
+    border-left: 2px solid var(--accentOrange);
+    flex-direction: column;
+    padding-top: min(30vh, 10rem);
+    padding-left: 2rem;
+    transform: translateX(100%);
+    transition: transform 350ms ease-out;
+    display: flex; 
+}
+
+.nav-list[data-visible="true"] {
+    transform: translateX(0%);
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.7);
+}
+
+.nav-list li {
+    margin: 1.5rem 0;
+}
+
+.nav-list a {
+    font-size: 1.2rem;
+    display: block;
+}
+
+/* =========================================
+   3. Main Content
+   ========================================= */
+
+/* Hero Section */
+.hero {
+  background-image: url("../img/HB2.png"); 
+  background-attachment: scroll; 
+  background-size: cover;
+  background-position: top center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.heroBox {
+  background-color: var(--background-color-trans);
+  padding: 2rem;
+  border-radius: 10px;
+  border-bottom: 3px solid var(--accentOrange);
+  max-width: 90%;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  color: var(--accentOrange);
+}
+
+/* Container */
+.container {
+  padding: 4rem 10%;
+  border-top: 5px double var(--accentYellow);
+}
+
+.container h2 {
+  color: var(--accentWhite);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+/* --- Dienstleistungen (Grid) --- */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  border-left: 3px solid var(--accentOrange);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card h3 {
+    margin-top: 0;
+    color: var(--accentOrange);
+}
+
+/* --- Galerie (Grid) --- */
+.gallery-grid {
+    display: grid;
+    /* Automatische Spalten, mindestens 250px breit */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px; /* Einheitliche Höhe für Sauberkeit */
+    object-fit: cover; /* Schneidet das Bild zu, damit nichts verzerrt */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.02);
+}
+
+/* --- Über uns (Layout) --- */
+.about-layout {
+    display: flex;
+    flex-direction: column; /* Mobile: untereinander */
+    gap: 2rem;
+}
+
+.about-image img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* =========================================
+   4. Footer
+   ========================================= */
+footer {
+  border-top: 5px double var(--accentYellow);
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: #0e1014;
+}
+
+.footer-nav {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-nav a {
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   5. Desktop Ansicht (Media Query ab 768px)
+   ========================================= */
+@media (min-width: 768px) {
+    
+    /* Header Desktop */
+    header {
+        padding: 1rem 5%;
+    }
+    
+    .header-logo {
+        width: 70px; /* Größeres Logo */
+    }
+
+    #name {
+        font-size: 2rem;
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    .nav-list {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        background: transparent;
+        border: none;
+        padding: 0;
+        inset: auto;
+        box-shadow: none;
+        gap: 2rem;
+    }
+
+    .nav-list li {
+        margin: 0;
+    }
+
+    .nav-list a {
+        font-size: 1.1rem;
+    }
+
+    /* Hero */
+    .hero {
+        background-attachment: fixed;
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    /* Grid Layouts */
+    .split-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Über uns: Nebeneinander */
+    .about-layout {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .about-image {
+        flex: 1; /* Nimmt 50% Platz */
+    }
+
+    .about-text {
+        flex: 1; /* Nimmt 50% Platz */
+        padding-left: 2rem;
+    }
+}

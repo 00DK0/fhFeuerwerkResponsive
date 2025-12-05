@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Feuerwerksverkauf von FH-Pyrotechnik - Silvesterfeuerwerk und unterjähriger Verkauf.">
+    <title>Feuerwerksverkauf | FH-Pyrotechnik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logoContainer">
+            <a href="index.html" class="branding">
+                <img src="img/Logo.png" alt="FH-Pyrotechnik Logo" class="header-logo">
+                <span id="name">FH-Pyrotechnik</span>
+            </a>
+        </div>
+        <button class="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Menü öffnen">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav>
+            <ul id="primary-navigation" class="nav-list" data-visible="false">
+                <li><a href="feuerwerksverkauf.html">Feuerwerksverkauf</a></li>
+                <li><a href="Beratung.html">Ihr Feuerwerk</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="height: 40vh; min-height: 300px;">
+            <div class="heroBox">
+                <h1>Silvesterverkauf</h1>
+                <p>Hochwertiges Feuerwerk für Ihren perfekten Jahreswechsel.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Einkauf & Öffnungszeiten 2025</h2>
+            <div class="split-grid">
+                <div>
+                    <p>Jedem Feuerwerksliebhaber gefällt es, Feuerwerke zu bestaunen - am liebsten das eigene zu Silvester. Damit auch Ihr Silvesterfeuerwerk perfekt wird, bieten wir hochwertige und besondere Feuerwerksartikel in einer breiten Auswahl von Marken an.</p>
+                    
+                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; margin-top: 1rem; border-left: 3px solid var(--accentOrange);">
+                        <h3 style="margin-top:0;">Öffnungszeiten:</h3>
+                        <ul style="list-style: none; padding: 0;">
+                            <li><strong>29.12.</strong>: 08:00 - 16:00 Uhr</li>
+                            <li><strong>30.12.</strong>: 08:00 - 16:00 Uhr</li>
+                            <li><strong>31.12.</strong>: 09:00 - 11:00 Uhr</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>Ihre Möglichkeiten</h3>
+                    <p>Sie haben die Möglichkeit, an den drei gesetzlichen Verkaufstagen die Artikel direkt bei uns im Laden auszuwählen.</p>
+                    <p><strong>Vorbestellung:</strong> Alternativ können Sie bequem vorbestellen und Ihre Ware fertig gepackt abholen.</p>
+                    
+                    <h3>Unterjähriger Verkauf</h3>
+                    <p>Mit Genehmigungsschein oder Erlaubnis nach §7 / §27 SprengG ist eine Abholung nach Terminvereinbarung jederzeit möglich.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="background-color: #0e1014;">
+            <h2>Unser Ladengeschäft</h2>
+            <p>Der Verkauf findet im Parkettstudio der Firma <strong>Boden Teufel GmbH & Co.KG</strong> statt:<br>
+            Gutermannstraße 18, 72160 Horb am Neckar</p>
+            
+            <div class="split-grid" style="margin-top: 2rem;">
+                <div class="image-wrapper">
+                    <img src="img/flyer4.jpg" alt="Flyer Feuerwerksverkauf" style="border-radius: 10px; width: 100%;">
+                </div>
+                <div class="image-wrapper">
+                    <img src="img/Laden1.jpg" alt="Blick in den Laden" style="border-radius: 10px; width: 100%;">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logoContainer" style="margin: 0 auto 20px auto; width: 100px;">
+            <img src="img/Logo.png" alt="FH-Pyrotechnik Logo" style="width: 100%">
+        </div>
+        <nav class="footer-nav">
+            <a href="feuerwerksverkauf.html">Verkauf</a>
+            <a href="Beratung.html">Beratung</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="AGB.html">AGB</a>
+        </nav>
+        <p>&copy; 2025 FH-Pyrotechnik | Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+        navToggle.addEventListener('click', () => {
+            const vis = navList.getAttribute('data-visible');
+            navList.setAttribute('data-visible', vis === "false" ? "true" : "false");
+            navToggle.setAttribute('aria-expanded', vis === "false" ? "true" : "false");
+        });
+    </script>
+</body>
+</html>

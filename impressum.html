@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Impressum von FH-Pyrotechnik.">
+    <title>Impressum | FH-Pyrotechnik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logoContainer">
+            <a href="index.html" class="branding">
+                <img src="img/Logo.png" alt="Logo" class="header-logo">
+                <span id="name">FH-Pyrotechnik</span>
+            </a>
+        </div>
+        <button class="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Menü öffnen">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav>
+            <ul id="primary-navigation" class="nav-list" data-visible="false">
+                <li><a href="feuerwerksverkauf.html">Feuerwerksverkauf</a></li>
+                <li><a href="Beratung.html">Ihr Feuerwerk</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container" style="padding-top: 120px;">
+            <h1 style="margin-bottom: 2rem;">Impressum</h1>
+
+            <div style="max-width: 800px;">
+                <p><strong>Angaben gemäß § 5 TMG:</strong></p>
+                <p>FH Pyrotechnik Einzelunternehmen<br>
+                Verantwortliche Person: Fabian Huprich<br>
+                Kreuzerstr. 23, 72160 Horb am Neckar</p>
+                
+                <h3>Kontakt:</h3>
+                <p>Telefon: <a href="tel:015207994397">01520 7994397</a><br>
+                E-Mail: <a href="mailto:fh.pyrotechnik@gmail.com">fh.pyrotechnik@gmail.com</a></p>
+                
+                <p style="margin-top: 20px;"><strong>Umsatzsteuerbefreit nach § 19 Abs. 1 UStG</strong></p>
+
+                <br><hr><br>
+
+                <h3>Haftpflichtversicherung</h3>
+                <p>Nürnberger Versicherungs-AG<br>
+                90334 Nürnberg</p>
+
+                <h3>Behördliche Dokumente (Pyrotechnik)</h3>
+                <p><strong>Fabian Huprich</strong> ist Inhaber der erforderlichen Dokumente:</p>
+                <ul style="padding-left: 20px;">
+                    <li>Erlaubnis nach § 7 SprengG</li>
+                    <li>Befähigung nach § 20 SprengG</li>
+                </ul>
+                <p>Ausgestellt durch das Bürgermeisteramt der Stadt Horb am Neckar.</p>
+
+                <br><hr><br>
+
+                <h3>Haftungsausschluss (Disclaimer)</h3>
+                
+                <h4>Haftung für Links</h4>
+                <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+
+                <h4>Urheberrecht</h4>
+                <p>Die erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung bedürfen der schriftlichen Zustimmung des Erstellers. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet.</p>
+
+                <h4>Streitschlichtung</h4>
+                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a>.<br>
+                Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle bereit.</p>
+
+                <p style="margin-top: 20px;">Dieses Impressum gilt auch für unsere Präsenzen auf sozialen Medien (z.B. Instagram).</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logoContainer" style="margin: 0 auto 20px auto; width: 100px;">
+            <img src="img/Logo.png" alt="Logo" style="width: 100%">
+        </div>
+        <nav class="footer-nav">
+            <a href="feuerwerksverkauf.html">Verkauf</a>
+            <a href="Beratung.html">Beratung</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="AGB.html">AGB</a>
+        </nav>
+        <p>&copy; 2025 FH-Pyrotechnik | Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+        navToggle.addEventListener('click', () => {
+            const vis = navList.getAttribute('data-visible');
+            navList.setAttribute('data-visible', vis === "false" ? "true" : "false");
+            navToggle.setAttribute('aria-expanded', vis === "false" ? "true" : "false");
+        });
+    </script>
+</body>
+</html>

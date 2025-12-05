@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontaktieren Sie FH-Pyrotechnik für Ihr Feuerwerk.">
+    <title>Kontakt | FH-Pyrotechnik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logoContainer">
+            <a href="index.html" class="branding">
+                <img src="img/Logo.png" alt="Logo" class="header-logo">
+                <span id="name">FH-Pyrotechnik</span>
+            </a>
+        </div>
+        <button class="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav>
+            <ul id="primary-navigation" class="nav-list" data-visible="false">
+                <li><a href="feuerwerksverkauf.html">Feuerwerksverkauf</a></li>
+                <li><a href="Beratung.html">Ihr Feuerwerk</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="height: 40vh; min-height: 300px;">
+            <div class="heroBox">
+                <h1>Kontakt</h1>
+                <p>Wir freuen uns auf Ihre Anfrage.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h2>Kontaktieren Sie uns</h2>
+            <div style="max-width: 800px;">
+                <p>Haben Sie Fragen oder möchten Sie ein Feuerwerk für Ihre Veranstaltung planen?</p>
+                
+                <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 20px;">
+                    
+                    <div class="service-card">
+                        <h3>Per E-Mail</h3>
+                        <p>Schreiben Sie uns jederzeit eine Nachricht.</p>
+                        <a href="mailto:fh.pyrotechnik@gmail.com" class="link-btn">fh.pyrotechnik@gmail.com</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h3>Telefonisch</h3>
+                        <p>Rufen Sie uns gerne für ein persönliches Gespräch an.</p>
+                        <a href="tel:015207994397" class="link-btn">01520 7994397</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logoContainer" style="margin: 0 auto 20px auto; width: 100px;">
+            <img src="img/Logo.png" alt="Logo" style="width: 100%">
+        </div>
+        <nav class="footer-nav">
+            <a href="feuerwerksverkauf.html">Verkauf</a>
+            <a href="Beratung.html">Beratung</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="AGB.html">AGB</a>
+        </nav>
+        <p>&copy; 2025 FH-Pyrotechnik | Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+        navToggle.addEventListener('click', () => {
+            const vis = navList.getAttribute('data-visible');
+            navList.setAttribute('data-visible', vis === "false" ? "true" : "false");
+            navToggle.setAttribute('aria-expanded', vis === "false" ? "true" : "false");
+        });
+    </script>
+</body>
+</html>

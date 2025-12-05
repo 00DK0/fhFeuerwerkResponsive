@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FH-Pyrotechnik - Ihr Partner für Feuerwerke</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logoContainer">
+            <a href="index.html" class="branding">
+                <img src="img/Logo.png" alt="FH-Pyrotechnik Logo" class="header-logo">
+                <span id="name">FH-Pyrotechnik</span>
+            </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Menü öffnen">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav>
+            <ul id="primary-navigation" class="nav-list" data-visible="false">
+                <li><a href="feuerwerksverkauf.html">Feuerwerksverkauf</a></li>
+                <li><a href="Beratung.html">Ihr Feuerwerk</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="heroBox">
+                <h1>FH-Pyrotechnik</h1>
+                <p>Ihr Partner für spektakuläre Feuerwerke, hochwertige Produkte und unvergessliche Erlebnisse!</p>
+                <a href="contact.html" class="cta-button">Jetzt anfragen</a>
+                <a href="FH_Pyrotechnik_Preisliste_2025.pdf" class="cta-button">Unser Sortiment</a>
+            </div>
+        </section>
+
+        <section id="services" class="container">
+            <h2>Unser Angebot</h2>
+            <div class="split-grid">
+                <a href="feuerwerksverkauf.html">
+                <article class="service-card">
+                    <h3>Feuerwerksverkauf</h3>
+                    <p>Durch unsere große Auswahl hochwertiger Feuerwerksprodukte können Sie ihren eigenen Feuerwerkszauber an Silvester genießen.</p>
+                </article>
+                </a>
+                <a href="Beratung.html"
+                <article class="service-card">
+                    <h3>Feuerwerk für Ihre Veranstaltung</h3>
+                    <p>Wir beraten Sie gerne, um das perfekte Feuerwerk für Ihre Veranstaltung zu finden und ein unvergessliches Erlebnis zu schaffen.</p>
+                </article>
+                </a>
+            </div>
+        </section>
+
+        <section id="gallery" class="container">
+            <h2><a href="galerie.html" style="text-decoration: none; color: inherit;">Galerie</a></h2>
+            <div class="gallery-grid">
+                <img src="img/bild2_3.jpg" alt="Feuerwerk Beispiel 1" loading="lazy">
+                <img src="img/bild2_4.jpg" alt="Feuerwerk Beispiel 2" loading="lazy">
+                <img src="img/bild2_5.jpg" alt="Feuerwerk Beispiel 3" loading="lazy">
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="galerie.html" class="link-btn">Alle Bilder ansehen</a>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <h2>Über uns</h2>
+            <div class="about-layout">
+                <div class="about-image">
+                    <img src="img/Hintergrund1.jpg" alt="Feuerwerk Hintergrund Team" loading="lazy">
+                </div>
+                <div class="about-text">
+                    <p>Durch unsere jahrelange Erfahrung mit der Gestaltung von Feuerwerken bieten wir unseren Kunden beeindruckende Feuerwerke und spektakuläre Effekte für Veranstaltungen aller Art.</p>
+                    <p>Nachhaltigkeit, allerhöchste Sicherheit und unvergessliche Erfahrung der Kunden stehen hierbei im Fokus.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logoContainer" style="margin: 0 auto 20px auto; width: 100px;">
+            <img src="img/Logo.png" alt="FH-Pyrotechnik Logo" style="width: 100%">
+        </div>
+        
+        <nav class="footer-nav">
+            <a href="feuerwerksverkauf.html">Verkauf</a>
+            <a href="Beratung.html">Beratung</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="AGB.html">AGB</a>
+        </nav>
+        
+        <p>&copy; 2025 FH-Pyrotechnik | Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+        const navLinks = document.querySelectorAll('.nav-list a');
+
+        navToggle.addEventListener('click', () => {
+            const visibility = navList.getAttribute('data-visible');
+            if (visibility === "false") {
+                navList.setAttribute('data-visible', "true");
+                navToggle.setAttribute('aria-expanded', "true");
+            } else {
+                navList.setAttribute('data-visible', "false");
+                navToggle.setAttribute('aria-expanded', "false");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navList.setAttribute('data-visible', "false");
+                navToggle.setAttribute('aria-expanded', "false");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bildergalerie unserer schönsten Feuerwerke.">
+    <title>Galerie | FH-Pyrotechnik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logoContainer">
+            <a href="index.html" class="branding">
+                <img src="img/Logo.png" alt="Logo" class="header-logo">
+                <span id="name">FH-Pyrotechnik</span>
+            </a>
+        </div>
+        <button class="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav>
+            <ul id="primary-navigation" class="nav-list" data-visible="false">
+                <li><a href="feuerwerksverkauf.html">Feuerwerksverkauf</a></li>
+                <li><a href="Beratung.html">Ihr Feuerwerk</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container" style="padding-top: 120px;">
+            <h1 style="text-align: center; margin-bottom: 40px;">Unsere Galerie</h1>
+            
+            <div class="gallery-grid">
+                <img src="img/bild11.jpg" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/HB2.png" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/bild8.jpg" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/bild6.jpg" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/bild10.jpg" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/bild12.jpg" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/Hintergrund1.jpg" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/bild1.jpg" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/bild2.jpg" loading="lazy" alt="Feuerwerk Impression">
+                <img src="img/bild3.jpg" loading="lazy" alt="Feuerwerk Impression">
+
+                <img src="img/bild2_1.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_2.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_3.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_4.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_5.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_6.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_7.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_8.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_9.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_10.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_11.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_12.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_13.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild2_14.jpg" loading="lazy" alt="Feuerwerk">
+
+                <img src="img/bild3_1.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild3_2.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild3_3.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild3_4.jpg" loading="lazy" alt="Feuerwerk">
+                <img src="img/bild3_5.jpg" loading="lazy" alt="Feuerwerk">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logoContainer" style="margin: 0 auto 20px auto; width: 100px;">
+            <img src="img/Logo.png" alt="Logo" style="width: 100%">
+        </div>
+        <nav class="footer-nav">
+            <a href="feuerwerksverkauf.html">Verkauf</a>
+            <a href="Beratung.html">Beratung</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="AGB.html">AGB</a>
+        </nav>
+        <p>&copy; 2025 FH-Pyrotechnik | Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+        navToggle.addEventListener('click', () => {
+            const vis = navList.getAttribute('data-visible');
+            navList.setAttribute('data-visible', vis === "false" ? "true" : "false");
+            navToggle.setAttribute('aria-expanded', vis === "false" ? "true" : "false");
+        });
+    </script>
+</body>
+</html>

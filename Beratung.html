@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Individuelle Feuerwerks-Beratung für Hochzeiten, Geburtstage und Events.">
+    <title>Ihr Feuerwerk | FH-Pyrotechnik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logoContainer">
+            <a href="index.html" class="branding">
+                <img src="img/Logo.png" alt="Logo" class="header-logo">
+                <span id="name">FH-Pyrotechnik</span>
+            </a>
+        </div>
+        <button class="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <nav>
+            <ul id="primary-navigation" class="nav-list" data-visible="false">
+                <li><a href="feuerwerksverkauf.html">Feuerwerksverkauf</a></li>
+                <li><a href="Beratung.html">Ihr Feuerwerk</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="height: 40vh; min-height: 300px;">
+            <div class="heroBox">
+                <h1>Ihr Wunschfeuerwerk</h1>
+                <p>Individuelle Planung für unvergessliche Momente.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Individuelle Beratung</h2>
+            <p style="max-width: 800px; margin-bottom: 2rem;">Egal ob Geburtstagsfeier, Hochzeit, Firmenjubiläum oder Vereinsfeier – durch unsere jahrelange Erfahrung finden wir eine individuelle Lösung, die perfekt zu Ihrer Veranstaltung passt.</p>
+            
+
+            <div style="margin-top: 3rem; background: rgba(255, 102, 0, 0.1); padding: 2rem; border-radius: 10px; border-left: 4px solid var(--accentOrange);">
+                <h3>Haben Sie eine besondere Idee?</h3>
+                <p>Wir beraten Sie gerne persönlich!</p>
+                <p>E-Mail: <a href="mailto:fh.pyrotechnik@gmail.com" style="text-decoration: underline;">fh.pyrotechnik@gmail.com</a><br>
+                Telefon: <a href="tel:015207994397" style="text-decoration: underline;">01520 7994397</a></p>
+                <a href="contact.html" class="link-btn">Zum Kontaktformular</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logoContainer" style="margin: 0 auto 20px auto; width: 100px;">
+            <img src="img/Logo.png" alt="FH-Pyrotechnik Logo" style="width: 100%">
+        </div>
+        <nav class="footer-nav">
+            <a href="feuerwerksverkauf.html">Verkauf</a>
+            <a href="Beratung.html">Beratung</a>
+            <a href="galerie.html">Galerie</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="impressum.html">Impressum</a>
+            <a href="AGB.html">AGB</a>
+        </nav>
+        <p>&copy; 2025 FH-Pyrotechnik | Alle Rechte vorbehalten</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.querySelector('.nav-list');
+        navToggle.addEventListener('click', () => {
+            const vis = navList.getAttribute('data-visible');
+            navList.setAttribute('data-visible', vis === "false" ? "true" : "false");
+            navToggle.setAttribute('aria-expanded', vis === "false" ? "true" : "false");
+        });
+    </script>
+</body>
+</html>
