@@ -8,12 +8,12 @@
   --accentYellow: #ff6600; 
   --accentOrange: #ff6600;
   --accentWhite: #f5f5f5;
-  --font-main: "myFont", sans-serif;
+  --bgImage: url("../img/HB2.jpg");
 }
 
 @font-face {
   font-family: "myFont";
-  src: url("../fonts/monbaiti.TTF") format("truetype");
+  src: url("../fonts/monbaiti.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -31,7 +31,7 @@ body {
   color: var(--accentWhite);
   margin: 0;
   padding: 0;
-  font-family: var(--font-main);
+  font-family: "myFont", sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -178,7 +178,7 @@ header {
 
 /* Hero Section */
 .hero {
-  background-image: url("../img/HB2.jpg"); 
+  background-image: var(--bgImage); 
   background-attachment: scroll; 
   background-size: cover;
   background-position: top center;
