@@ -46,11 +46,12 @@ img {
 a {
   color: var(--accentWhite);
   text-decoration: none;
-  transition: color 0.3s ease;
+  
 }
 
 a:hover {
   color: var(--accentOrange);
+  transition: color 0.3s ease;
 }
 
 .cta-button, .link-btn {
@@ -223,6 +224,13 @@ header {
   gap: 2rem;
 }
 
+.split-grid > a {
+    display: block;      /* Forces the link to behave like a box, not text */
+    height: 100%;        /* Ensures both cards stretch to be the same height */
+    text-decoration: none;
+    color: inherit;      /* Prevents the text color from flashing blue/purple */
+}
+
 .service-card {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 2rem;
@@ -322,11 +330,13 @@ footer {
         transform: none;
         flex-direction: row;
         background: transparent;
-        border: none;
+        border: none !important;
         padding: 0;
         inset: auto;
-        box-shadow: none;
+        box-shadow: none; 
         gap: 2rem;
+
+        transition: none !important;
     }
 
     .nav-list li {
