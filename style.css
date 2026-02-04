@@ -197,6 +197,7 @@ header {
   border-radius: 10px;
   border-bottom: 3px solid var(--accentOrange);
   max-width: 90%;
+  font-size: 1.5rem;
 }
 
 .hero h1 {
@@ -209,6 +210,7 @@ header {
 .container {
   padding: 4rem 10%;
   border-top: 5px double var(--accentYellow);
+  font-size: 1.2rem;
 }
 
 .container h2 {
@@ -216,12 +218,33 @@ header {
   font-size: 1.8rem;
   margin-bottom: 2rem;
 }
-
+/* --- Überschriften Feuerwerksverkauf --- */
+.container h3 {
+  color: var(--accentWhite);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--accentOrange);
+}
+/* --- Überschrift Beratung --- */
+.container h4 {
+  color: var(--accentWhite);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--accentOrange);
+}
+/* --- Überschriften Beratung --- */
+.container h5 {
+  color: var(--accentWhite);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--accentOrange);
+}
 /* --- Dienstleistungen (Grid) --- */
 .split-grid {
   display: grid;
   grid-template-columns: 1fr; 
-  gap: 2rem;
+  gap: 4rem;
+  font-size: 1.2rem;
 }
 
 .split-grid > a {
@@ -267,7 +290,25 @@ header {
 .gallery-grid img:hover {
     transform: scale(1.02);
 }
+/* --- Einzelbilder  --- */
+.einzelbilder{
+    display: grid;
+    /* Automatische Spalten, mindestens 250px breit */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
 
+.einzelbilder img {
+    width: 50%;
+    height: 270px; /* Einheitliche Höhe für Sauberkeit */
+    object-fit: cover; /* Schneidet das Bild zu, damit nichts verzerrt */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.einzelbilder img:hover {
+    transform: scale(1.02);
+}
 /* --- Über uns (Layout) --- */
 .about-layout {
     display: flex;
