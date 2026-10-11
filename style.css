@@ -417,3 +417,58 @@ footer {
         padding-left: 2rem;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* PRODUKTANZEIGE */
+
+.produkt-liste {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.produkt {
+    width: 300px;
+    max-width: 100%;
+    padding: 20px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.produkt-name {
+    text-align: center;
+    font-size: 22px;
+    margin: 0 0 20px 0;
+}
+
+.produkt-inhalt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.produkt-bild {
+    width: 150px;
+    max-width: 60%;
+    height: 150px;
+    object-fit: contain;
+}
+
+.produkt-preis {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accentOrange);
+    white-space: nowrap;
+}
