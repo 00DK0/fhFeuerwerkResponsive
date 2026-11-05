@@ -5,17 +5,24 @@
   --background-color: #17191f;
   --background-color-trans: #17191fE6;
   --backgroundColorTransGradiant: linear-gradient(to bottom, rgba(23, 25, 31, 1) 75%, rgba(23, 25, 31, 0) 100%);
-  --accentYellow: #ff6600; 
+  --accentYellow: #ff6600;
   --accentOrange: #ff6600;
   --accentWhite: #f5f5f5;
-  --bgImage: url("../img/HB2.jpg");
+  --footer-bg: #0e1014;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --bgImage: url("img/HB2.jpg");
+
+  --header-height: 66px;   /* Höhe des fixierten Headers (Mobile) */
+  --gutter: 1.25rem;       /* Seitenabstand auf kleinen Bildschirmen */
+  --content-max: 1200px;   /* Maximale Inhaltsbreite auf großen Bildschirmen */
 }
 
 @font-face {
   font-family: "myFont";
-  src: url("../fonts/monbaiti.ttf") format("truetype");
+  src: url("fonts/monbaiti.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 *, *::before, *::after {
@@ -24,6 +31,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* Sprungziele (#anker) nicht unter dem fixierten Header verstecken */
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -36,67 +47,150 @@ body {
   overflow-x: hidden;
 }
 
+/* Kein Scrollen der Seite, solange das mobile Menü oder die Bildansicht offen ist */
+body.nav-open,
+body.lightbox-open {
+  overflow: hidden;
+}
+
 /* Bild-Handling Global: Verhindert, dass Bilder den Rahmen sprengen */
 img {
-    max-width: 100%;
-    height: auto;
-    display: block; /* Entfernt kleine Lücken unter Bildern */
+  max-width: 100%;
+  height: auto;
+  display: block; /* Entfernt kleine Lücken unter Bildern */
 }
 
 a {
   color: var(--accentWhite);
   text-decoration: none;
-  
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 a:hover {
   color: var(--accentOrange);
-  transition: color 0.3s ease;
 }
 
+/* Sichtbarer Fokus für Tastatur-Nutzer */
+:focus-visible {
+  outline: 2px solid var(--accentOrange);
+  outline-offset: 3px;
+}
+
+/* Unterstrichener Textlink (z. B. E-Mail, Telefon, Route) */
+.text-link {
+  color: var(--accentOrange);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.text-link:hover {
+  color: var(--accentWhite);
+}
+
+.accent {
+  color: var(--accentOrange);
+}
+
+.text-light {
+  color: var(--accentWhite);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Verhindert, dass "ß" in Großbuchstaben-Text zu "SS" wird
+   (die Schrift hat kein großes ẞ) */
+.keep-case {
+  text-transform: none;
+}
+
+/* "Zum Inhalt springen" – nur bei Tastaturfokus sichtbar */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 10002;
+  padding: 0.5rem 1rem;
+  background: var(--accentOrange);
+  color: var(--background-color);
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  color: var(--background-color);
+}
+
+/* Buttons */
 .cta-button, .link-btn {
   display: inline-block;
+  max-width: 100%;
   margin-top: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.1rem;
   border: 2px solid var(--accentOrange);
   color: var(--accentOrange);
   border-radius: 5px;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
+  line-height: 1.3;
+  text-align: center;
 }
 
-.cta-button:hover, .link-btn:hover {
+.cta-button:hover, .link-btn:hover,
+.cta-button:focus-visible, .link-btn:focus-visible {
   background-color: var(--accentOrange);
-  color: var(--accentWhite);
+  color: var(--background-color); /* dunkle Schrift: deutlich besser lesbar als Weiß auf Orange */
+}
+
+/* Für E-Mail-Adressen etc.: keine Großbuchstaben, darf umbrechen */
+.link-btn--plain {
+  text-transform: none;
+  letter-spacing: 0.5px;
+  overflow-wrap: anywhere;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+}
+
+.button-row .cta-button,
+.button-row .link-btn {
+  margin-top: 0;
 }
 
 /* =========================================
    2. Header & Navigation (Mobile First)
    ========================================= */
 header {
-    background: var(--backgroundColorTransGradiant);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 5%;
+  background: var(--backgroundColorTransGradiant);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 5%;
 }
 
 /* Logo & Branding Area */
 .branding {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 10001; /* Über dem Menü */
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .header-logo {
-    width: 50px; /* Logo-Größe für Mobile */
-    height: auto;
+  width: 50px; /* Logo-Größe für Mobile */
+  height: auto;
 }
 
 #name {
@@ -107,70 +201,85 @@ header {
 
 /* Hamburger Button */
 .mobile-menu-toggle {
-    display: block; 
-    position: absolute;
-    top: 1.5rem;
-    right: 5%;
-    z-index: 10000;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    padding: 0;
+  position: relative;
+  z-index: 10000;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;  /* ausreichend große Touch-Fläche */
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .bar {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: var(--accentWhite);
-    margin: 5px 0;
-    border-radius: 3px;
-    transition: all 0.4s ease;
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: var(--accentWhite);
+  border-radius: 3px;
+  transition: transform 0.4s ease, opacity 0.4s ease, background-color 0.4s ease;
 }
 
 .mobile-menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-    background-color: var(--accentOrange);
+  transform: translateY(8px) rotate(45deg);
+  background-color: var(--accentOrange);
 }
 .mobile-menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 .mobile-menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-    background-color: var(--accentOrange);
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: var(--accentOrange);
 }
 
-/* Navigation List */
+/* Navigation List (mobiles Seitenmenü) */
 .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    inset: 0 0 0 30%;
-    background-color: var(--background-color);
-    border-left: 2px solid var(--accentOrange);
-    flex-direction: column;
-    padding-top: min(30vh, 10rem);
-    padding-left: 2rem;
-    transform: translateX(100%);
-    transition: transform 350ms ease-out;
-    display: flex; 
+  list-style: none;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(75vw, 340px);
+  background-color: var(--background-color);
+  border-left: 2px solid var(--accentOrange);
+  display: flex;
+  flex-direction: column;
+  padding: min(30vh, 10rem) 2rem 2rem;
+  overflow-y: auto;
+  transform: translateX(100%);
+  visibility: hidden; /* geschlossenes Menü ist nicht per Tab erreichbar */
+  transition: transform 350ms ease-out, visibility 0s linear 350ms;
 }
 
 .nav-list[data-visible="true"] {
-    transform: translateX(0%);
-    box-shadow: 0 0 0 100vmax rgba(0,0,0,0.7);
+  transform: translateX(0%);
+  visibility: visible;
+  transition: transform 350ms ease-out, visibility 0s;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.7);
 }
 
 .nav-list li {
-    margin: 1.5rem 0;
+  margin: 0.75rem 0;
 }
 
 .nav-list a {
-    font-size: 1.2rem;
-    display: block;
+  font-size: 1.3rem;
+  display: block;
+  padding: 0.4rem 0;
+}
+
+/* Aktuelle Seite hervorheben */
+.nav-list a[aria-current="page"],
+.footer-nav a[aria-current="page"] {
+  color: var(--accentOrange);
 }
 
 /* =========================================
@@ -179,147 +288,365 @@ header {
 
 /* Hero Section */
 .hero {
-  background-image: var(--bgImage); 
-  background-attachment: scroll; 
+  background-image: var(--bgImage);
+  background-attachment: scroll;
   background-size: cover;
   background-position: top center;
-  height: 100vh;
+  min-height: 100vh;
+  min-height: 100svh; /* berücksichtigt die Adressleiste auf Smartphones */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 60px;
+  padding: calc(var(--header-height) + 1.5rem) var(--gutter) 2.5rem;
+}
+
+/* Kleiner Hero für Unterseiten */
+.hero--small {
+  min-height: max(300px, 40vh);
 }
 
 .heroBox {
   background-color: var(--background-color-trans);
-  padding: 2rem;
+  padding: 1.5rem 1.25rem;
   border-radius: 10px;
   border-bottom: 3px solid var(--accentOrange);
-  max-width: 90%;
-  font-size: 1.5rem;
+  max-width: 100%;
+  font-size: 1.25rem;
+}
+
+.heroBox > :last-child {
+  margin-bottom: 0;
 }
 
 .hero h1 {
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 7vw, 3.5rem);
+  line-height: 1.2;
   margin: 0 0 1rem 0;
   color: var(--accentOrange);
 }
 
-/* Container */
-.container {
-  padding: 4rem 10%;
-  border-top: 5px double var(--accentYellow);
-  font-size: 1.2rem;
+.hero p {
+  margin: 0;
 }
 
-.container h2 {
-  color: var(--accentWhite);
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 1.75rem;
 }
-/* --- Überschriften Feuerwerksverkauf --- */
+
+.hero-actions .cta-button {
+  margin-top: 0;
+  font-size: clamp(1rem, 3.6vw, 1.5rem);
+}
+
+/* Container */
+.container {
+  padding: 3rem var(--gutter);
+  border-top: 5px double var(--accentYellow);
+  font-size: 1.1rem;
+}
+
+/* Erste Sektion ohne Hero (Impressum, AGB): Platz für den fixierten Header */
+.container.page-top {
+  border-top: 0;
+  padding-top: calc(var(--header-height) + 2.5rem);
+}
+
+/* Überschriften (h2 = Abschnitt, h3 = Unterabschnitt, h4 = Punkt) */
+.container h2,
+.page-title {
+  color: var(--accentOrange);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+
 .container h3 {
-  color: var(--accentWhite);
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
   color: var(--accentOrange);
+  font-size: clamp(1.4rem, 3.6vw, 2rem);
+  line-height: 1.25;
+  margin: 2.5rem 0 1rem;
 }
-/* --- Überschrift Beratung --- */
+
 .container h4 {
+  color: var(--accentOrange);
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  line-height: 1.3;
+  margin: 2.25rem 0 0.75rem;
+}
+
+.container * + h2 {
+  margin-top: 3.5rem;
+}
+
+.container h2:first-child,
+.container h3:first-child,
+.container h4:first-child {
+  margin-top: 0;
+}
+
+/* Überschrift, die gleichzeitig Link ist */
+.heading-link {
+  color: inherit;
+}
+
+.heading-link:hover {
   color: var(--accentWhite);
-  font-size: 2rem;
-  margin-bottom: 2rem;
+}
+
+.center-action {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.center-action .link-btn,
+.center-action .cta-button {
+  margin-top: 0;
+}
+
+/* --- Aufzählung mit orangefarbenem Strich (Startseite) --- */
+.dash-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.dash-list li {
+  position: relative;
+  padding-left: 1.4em;
+  margin-bottom: 0.75em;
+}
+
+.dash-list li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
   color: var(--accentOrange);
 }
-/* --- Überschriften Beratung --- */
-.container h5 {
-  color: var(--accentWhite);
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  color: var(--accentOrange);
-}
+
 /* --- Dienstleistungen (Grid) --- */
 .split-grid {
   display: grid;
-  grid-template-columns: 1fr; 
-  gap: 4rem;
-  font-size: 1.2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  font-size: 1.1rem;
 }
 
-.split-grid > a {
-    display: block;      /* Forces the link to behave like a box, not text */
-    height: 100%;        /* Ensures both cards stretch to be the same height */
-    text-decoration: none;
-    color: inherit;      /* Prevents the text color from flashing blue/purple */
+.card-link,
+.card-link:hover {
+  display: block;      /* Link verhält sich wie eine Box */
+  height: 100%;        /* beide Karten gleich hoch */
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
 }
 
 .service-card {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
+  height: 100%;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
   border-radius: 10px;
   border-left: 3px solid var(--accentOrange);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.service-card:hover {
+.service-card > :last-child {
+  margin-bottom: 0;
+}
+
+.card-link:hover .service-card,
+.card-link:focus-visible .service-card {
   transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
-.service-card h3 {
-    margin-top: 0;
-    color: var(--accentOrange);
+.container .service-card h3 {
+  margin-top: 0;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  color: var(--accentOrange);
+}
+
+.card-more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--accentOrange);
+  font-weight: bold;
+}
+
+/* --- Kontakt-Karten --- */
+.contact-wrap {
+  max-width: 800px;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 2rem;
 }
 
 /* --- Galerie (Grid) --- */
 .gallery-grid {
-    display: grid;
-    /* Automatische Spalten, mindestens 250px breit */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+  display: grid;
+  /* Automatische Spalten, mindestens 250px breit */
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: 15px;
+}
+
+/* Galerie-Seite: auf Smartphones zwei Bilder nebeneinander */
+.gallery-grid--full {
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 45%), 1fr));
+  gap: 10px;
 }
 
 .gallery-grid img {
-    width: 100%;
-    height: 250px; /* Einheitliche Höhe für Sauberkeit */
-    object-fit: cover; /* Schneidet das Bild zu, damit nichts verzerrt */
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3; /* einheitliches Format */
+  object-fit: cover;   /* Schneidet das Bild zu, damit nichts verzerrt */
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 .gallery-grid img:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
-/* --- Einzelbilder  --- */
-.einzelbilder{
-    display: grid;
-    /* Automatische Spalten, mindestens 250px breit */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+
+.gallery-note {
+  margin-top: 2rem;
+}
+
+/* --- Einzelbilder (Beratung) --- */
+.einzelbilder {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  max-width: 600px;
+  margin: 1.5rem 0 0.5rem;
 }
 
 .einzelbilder img {
-    width: 50%;
-    height: 270px; /* Einheitliche Höhe für Sauberkeit */
-    object-fit: cover; /* Schneidet das Bild zu, damit nichts verzerrt */
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
 .einzelbilder img:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
+
+/* Bilder, die per Klick vergrößert werden können */
+img.zoomable {
+  cursor: zoom-in;
+}
+
 /* --- Über uns (Layout) --- */
 .about-layout {
-    display: flex;
-    flex-direction: column; /* Mobile: untereinander */
-    gap: 2rem;
+  display: flex;
+  flex-direction: column; /* Mobile: untereinander */
+  gap: 2rem;
 }
 
 .about-image img {
-    border-radius: 10px;
-    width: 100%;
-    object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.about-image--flyer img {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.about-text p {
+  margin: 0 0 1.25em;
+}
+
+.about-text > :last-child {
+  margin-bottom: 0;
+}
+
+/* --- Ladenverkauf: Adresse & Öffnungszeiten --- */
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.info-list li {
+  margin-bottom: 0.5rem;
+}
+
+.info-list strong {
+  color: var(--accentOrange);
+  font-weight: bold;
+}
+
+/* --- Rechtstexte (Impressum, AGB) --- */
+.legal {
+  max-width: 900px;
+  font-size: 1rem;
+}
+
+.container .legal h2 {
+  font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+  margin: 2.5rem 0 0.75rem;
+}
+
+.container .legal > h2:first-child {
+  margin-top: 0;
+}
+
+.container .legal h3 {
+  font-size: clamp(1.15rem, 2.6vw, 1.35rem);
+  margin: 2rem 0 0.5rem;
+}
+
+.container .legal h4 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.container .legal h2.chapter-title {
+  display: table; /* zentriert und nur so breit wie der Text */
+  margin: 3rem auto 2rem;
+  padding: 0 10px;
+  border-bottom: 2px solid var(--accentOrange);
+  color: var(--accentWhite);
+  text-align: center;
+}
+
+.legal hr {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 2.5rem 0;
+}
+
+.legal .indent {
+  padding-left: 1.25rem;
+  margin: 0.75rem 0;
+}
+
+.legal ul {
+  padding-left: 1.25rem;
+}
+
+.legal a {
+  color: var(--accentOrange);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.legal a:hover {
+  color: var(--accentWhite);
 }
 
 /* =========================================
@@ -328,147 +655,305 @@ header {
 footer {
   border-top: 5px double var(--accentYellow);
   text-align: center;
-  padding: 3rem 2rem;
-  background-color: #0e1014;
+  padding: 3rem var(--gutter);
+  background-color: var(--footer-bg);
+}
+
+.footer-logo {
+  display: block;
+  width: 100px;
+  margin: 0 auto 20px auto;
 }
 
 .footer-nav {
-    margin-bottom: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 1rem;
 }
 
 .footer-nav a {
-    font-size: 0.9rem;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.25rem; /* größere Touch-Fläche */
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 /* =========================================
-   5. Desktop Ansicht (Media Query ab 768px)
+   5. Bildansicht (Lightbox)
+   ========================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accentWhite);
+  overflow: hidden;
+}
+
+.lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 4rem 0.75rem 1.5rem;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: calc(100% - 2.5rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.lightbox__counter {
+  font-size: 0.95rem;
+}
+
+.lightbox__btn {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0 0 4px;
+  border: 2px solid var(--accentOrange);
+  border-radius: 50%;
+  background: rgba(23, 25, 31, 0.85);
+  color: var(--accentWhite);
+  font-family: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.lightbox__btn:hover {
+  background: var(--accentOrange);
+  color: var(--background-color);
+}
+
+.lightbox__close {
+  top: 1rem;
+  right: 1rem;
+}
+
+.lightbox__prev,
+.lightbox__next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__prev { left: 0.75rem; }
+.lightbox__next { right: 0.75rem; }
+
+.lightbox[data-single] .lightbox__prev,
+.lightbox[data-single] .lightbox__next,
+.lightbox[data-single] .lightbox__counter {
+  display: none;
+}
+
+/* =========================================
+   6. Tablet / Desktop (ab 768px)
    ========================================= */
 @media (min-width: 768px) {
-    
-    /* Header Desktop */
-    header {
-        padding: 1rem 5%;
-    }
-    
-    .header-logo {
-        width: 70px; /* Größeres Logo */
-    }
+  :root {
+    --header-height: 102px;
+  }
 
-    #name {
-        font-size: 2rem;
-    }
+  /* Header Desktop */
+  header {
+    padding: 1rem 5%;
+  }
 
-    .mobile-menu-toggle {
-        display: none;
-    }
+  .header-logo {
+    width: 70px; /* Größeres Logo */
+  }
 
-    .nav-list {
-        position: static;
-        transform: none;
-        flex-direction: row;
-        background: transparent;
-        border: none !important;
-        padding: 0;
-        inset: auto;
-        box-shadow: none; 
-        gap: 2rem;
+  #name {
+    font-size: 2rem;
+  }
 
-        transition: none !important;
-    }
+  /* Hero */
+  .heroBox {
+    padding: 2rem;
+    font-size: 1.5rem;
+  }
 
-    .nav-list li {
-        margin: 0;
-    }
+  .hero-actions {
+    gap: 2.25rem;
+  }
 
-    .nav-list a {
-        font-size: 1.1rem;
-    }
+  /* Inhalt: 10 % Rand, auf sehr breiten Bildschirmen max. 1200px Inhaltsbreite */
+  .container {
+    padding: 4rem max(10%, calc((100% - var(--content-max)) / 2));
+    font-size: 1.2rem;
+  }
 
-    /* Hero */
-    .hero {
-        background-attachment: fixed;
-    }
-    
-    .hero h1 {
-        font-size: 3.5rem;
-    }
+  .container.page-top {
+    padding-top: calc(var(--header-height) + 3rem);
+  }
 
-    /* Grid Layouts */
-    .split-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+  .legal {
+    font-size: 1.05rem;
+  }
 
-    /* Über uns: Nebeneinander */
-    .about-layout {
-        flex-direction: row;
-        align-items: center;
-    }
+  /* Grid Layouts */
+  .split-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    font-size: 1.2rem;
+  }
 
-    .about-image {
-        flex: 1; /* Nimmt 50% Platz */
-    }
+  .service-card {
+    padding: 2rem;
+  }
 
-    .about-text {
-        flex: 1; /* Nimmt 50% Platz */
-        padding-left: 2rem;
-    }
+  .gallery-grid--full {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  /* Über uns: Nebeneinander */
+  .about-layout {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .about-image {
+    flex: 1; /* Nimmt 50% Platz */
+  }
+
+  .about-text {
+    flex: 1; /* Nimmt 50% Platz */
+    padding-left: 2rem;
+  }
+
+  .lightbox__figure {
+    padding: 4rem 5rem 1.5rem;
+  }
+
+  .lightbox__prev { left: 1.5rem; }
+  .lightbox__next { right: 1.5rem; }
+}
+
+/* Feststehender Hintergrund nur auf Geräten mit Maus
+   (iOS/Android stellen "fixed" verzerrt dar) */
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+  .hero {
+    background-attachment: fixed;
+  }
+}
+
+/* =========================================
+   7. Desktop-Navigation (ab 960px)
+   Darunter passt die Navigation nicht neben das Logo.
+   ========================================= */
+@media (min-width: 960px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+
+  .nav-list,
+  .nav-list[data-visible="true"] {
+    position: static;
+    width: auto;
+    transform: none;
+    visibility: visible;
+    flex-direction: row;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    overflow: visible;
+    gap: 2rem;
+    transition: none;
+  }
+
+  .nav-list li {
+    margin: 0;
+  }
+
+  .nav-list a {
+    font-size: 1.1rem;
+    padding: 0.25rem 0;
+  }
+}
+
+/* Weniger Bewegung, wenn im System so eingestellt */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+  }
 }
 
 
-
-
-
-
-
-
-
-
-
-/* PRODUKTANZEIGE */
-
+/* =========================================
+   8. Produktanzeige (derzeit nicht verwendet)
+   ========================================= */
 .produkt-liste {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 30px 0;
 }
 
 .produkt {
-    width: 300px;
-    max-width: 100%;
-    padding: 20px;
-    border: 1px solid #444;
-    border-radius: 10px;
-    box-sizing: border-box;
+  width: 300px;
+  max-width: 100%;
+  padding: 20px;
+  border: 1px solid #444;
+  border-radius: 10px;
 }
 
 .produkt-name {
-    text-align: center;
-    font-size: 22px;
-    margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 22px;
+  margin: 0 0 20px 0;
 }
 
 .produkt-inhalt {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .produkt-bild {
-    width: 150px;
-    max-width: 60%;
-    height: 150px;
-    object-fit: contain;
+  width: 150px;
+  max-width: 60%;
+  height: 150px;
+  object-fit: contain;
 }
 
 .produkt-preis {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--accentOrange);
-    white-space: nowrap;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--accentOrange);
+  white-space: nowrap;
 }

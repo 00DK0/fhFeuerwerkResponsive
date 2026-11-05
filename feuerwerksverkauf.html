@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Feuerwerksverkauf von FH-Pyrotechnik - Silvesterfeuerwerk und unterjähriger Verkauf.">
+    <meta name="description" content="Feuerwerksverkauf von FH-Pyrotechnik in Horb am Neckar: Silvesterfeuerwerk vorbestellen, Ladenverkauf am 29. und 30.12.2026 und unterjähriger Verkauf.">
+    <meta name="theme-color" content="#17191f">
     <title>Feuerwerksverkauf | FH-Pyrotechnik</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/Logo.png" sizes="any">
-    <link rel="icon" href="img/Logo.png" type="image/svg+xml">
+    <link rel="icon" href="img/Logo-small.png" type="image/png">
+    <link rel="apple-touch-icon" href="img/Logo-small.png">
 </head>
 <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header id="main-header">
         <div class="logoContainer">
             <a href="index.html" class="branding">
-                <img src="img/Logo.png" alt="FH-Pyrotechnik Logo" class="header-logo">
+                <img src="img/Logo-small.png" alt="" class="header-logo" width="70" height="70">
                 <span id="name">FH-Pyrotechnik</span>
             </a>
         </div>
-        <button class="mobile-menu-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Menü öffnen">
+        <button class="mobile-menu-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Menü öffnen">
             <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
-        <nav>
+        <nav aria-label="Hauptnavigation">
             <ul id="primary-navigation" class="nav-list" data-visible="false">
-                <!-- <li><a href="feuerwerksverkauf.html">Feuerwerksverkauf</a></li> -->
+                <li><a href="feuerwerksverkauf.html" aria-current="page">Feuerwerksverkauf</a></li>
                 <li><a href="Beratung.html">Dein Feuerwerk</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
                 <li><a href="contact.html">Kontakt</a></li>
@@ -31,98 +33,82 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero" style="height: 40vh; min-height: 300px;">
+    <main id="inhalt">
+        <section class="hero hero--small">
             <div class="heroBox">
                 <h1>Silvesterverkauf 2026</h1>
-                <p>Hochwertiges Feuerwerk für Deinen perfekten Jahreswechsel.</p>            
+                <p>Hochwertiges Feuerwerk für Deinen perfekten Jahreswechsel.</p>
             </div>
         </section>
 
         <section class="container">
-            <!--<h3>Vorverkauf 2026</h3> -->
-            
-                <div>
-                    <!-- <p style="font-size: 25px; color: var(--accentOrange);"> Kaum ist Silvester vorbei geht es bereits wieder in die heiße Phase! Wir arbeiten fleißig daran euch auch dieses Jahr wieder ein großes Sortiment zur Verfügung stellen zu können. </p> -->
-                    <!--<h3>Gute Neuigkeiten!</h3> -->
-                    <h3>Unsere Vorbestelliste für Silvester 2026:</h3>
-                    <!--<p>Unsere neue Vorbestellliste für 2026 kommt demnächst online.</p>-->
-                    <!--<p>Jedem Feuerwerksliebhaber gefällt es, Feuerwerke zu bestaunen - am liebsten das eigene zu Silvester. Damit auch Dein Silvesterfeuerwerk perfekt wird, bieten wir hochwertige und besondere Feuerwerksartikel in einer breiten Auswahl von Marken an.</p>-->
-                    <a href="FH Pyrotechnik Preisliste 01.11.2026.pdf" class="cta-button">Sortiment 2026</a> 
-                    <br><br><br>                    
-                    <h3>2026 wird es endlich einen Ladenverkauf in Horb geben!</h3>  
-                    <p>Robert-Bosch-Str. 24, 72160 Horb - Bildechingen</p>
-                    <p>29.12.2026 von 6 - 17 Uhr</p>
-                    <p>30.12.2026 von 8 - 16 Uhr</p>
-                     <div class="about-image">
-                    </div><section id="about" class="container">
-            <h2></h2>
+            <!--<h2>Vorverkauf 2026</h2> -->
+            <!-- <p style="font-size: 25px; color: var(--accentOrange);"> Kaum ist Silvester vorbei, geht es bereits wieder in die heiße Phase! Wir arbeiten fleißig daran, euch auch dieses Jahr wieder ein großes Sortiment zur Verfügung stellen zu können. </p> -->
+            <!--<p>Unsere neue Vorbestellliste für 2026 kommt demnächst online.</p>-->
+
+            <h2>Unsere Vorbestellliste für Silvester 2026</h2>
+            <p>Wähle Deine Artikel bequem aus unserer Preisliste aus und schicke uns Deine Bestellung per E-Mail.</p>
+            <div class="button-row">
+                <a href="FH%20Pyrotechnik%20Preisliste%2001.11.2026.pdf" class="cta-button" target="_blank" rel="noopener">Sortiment 2026 (PDF)</a>
+                <a href="mailto:fh.pyrotechnik@gmail.com?subject=Vorbestellung%20Silvester%202026" class="link-btn">Per E-Mail vorbestellen</a>
+            </div>
+
+            <h2>2026 wird es endlich einen Ladenverkauf in Horb geben!</h2>
+            <ul class="info-list">
+                <li><strong>Adresse:</strong> <span class="nowrap">Robert-Bosch-Str. 24,</span> <span class="nowrap">72160 Horb-Bildechingen</span><br>
+                    <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Robert-Bosch-Str.%2024%2C%2072160%20Horb%20am%20Neckar" target="_blank" rel="noopener">Route planen</a></li>
+                <li><strong>Di., 29.12.2026:</strong> 6–17 Uhr</li>
+                <li><strong>Mi., 30.12.2026:</strong> 8–16 Uhr</li>
+            </ul>
+        </section>
+
+        <section id="about" class="container">
             <div class="about-layout">
-                <div class="about-image">
-                    <img src="img/InstaBeitrag.png" alt="Feuerwerk Hintergrund Team" loading="lazy">
+                <div class="about-image about-image--flyer">
+                    <img src="img/InstaBeitrag.jpg" alt="Flyer: Großer Feuerwerksverkauf direkt vom Pyrotechniker am 29.12. von 6 bis 17 Uhr und am 30.12. von 8 bis 16 Uhr, Robert-Bosch-Str. 24, 72160 Horb am Neckar" loading="lazy" width="1080" height="1350">
                 </div>
                 <div class="about-text">
-                    <h3>Deine Möglichkeiten</h3>
-                    <p>Du hast die Möglichkeit, Dein Feuerwerk bequem vorzubestellen und dieses an den drei gesetzlichen Verkaufstagen fertig gepackt abzuholen. <br> Alternativ kanst Du uns gerne im Ladenverkauf besuchen.</p>
+                    <h2>Deine Möglichkeiten</h2>
+                    <p>Du kannst Dein Feuerwerk bequem vorbestellen und es an den drei gesetzlichen Verkaufstagen fertig gepackt abholen. Alternativ kannst Du uns gerne im Ladenverkauf besuchen.</p>
                     <h3>Unterjähriger Verkauf</h3>
-                    <p>Mit Genehmigungsschein oder Erlaubnis nach §7 / §27 SprengG ist eine Abholung nach Terminvereinbarung jederzeit möglich.</p>
+                    <p>Mit Genehmigungsschein oder einer Erlaubnis nach § 7 bzw. § 27 SprengG ist eine Abholung nach Terminvereinbarung jederzeit möglich.</p>
                 </div>
             </div>
-        </section>
-                    
-                    <!-- <p>Die genaue Adresse wird bald veröffentlicht. </p>   
-                    <p>Viele weitere Artikel folgen in Kürze!</p>
-                    <p>Freut euch auf eine große Auswahl an Artikeln von Funke, Argento, Albert, El Gato, Pyroprodukt, Nico, Zink und weiteren!</p>--> 
-                    
-                    
-                    <!-- Produktanzeige 
 
+            <!-- <p>Die genaue Adresse wird bald veröffentlicht.</p>
+            <p>Viele weitere Artikel folgen in Kürze!</p>
+            <p>Freut euch auf eine große Auswahl an Artikeln von Funke, Argento, Albert, El Gato, Pyroprodukt, Nico, Zink und weiteren!</p> -->
 
-                        <div class="produkt-liste">
-                        <div class="produkt">
-                        <h3 class="produkt-name">King of Bling</h3>
-                        <div class="produkt-inhalt">
-                        <img src="img/King of bling.jpg" alt="Produktname" class="produkt-bild">
+            <!-- Produktanzeige
+            <div class="produkt-liste">
+                <div class="produkt">
+                    <h3 class="produkt-name">King of Bling</h3>
+                    <div class="produkt-inhalt">
+                        <img src="img/King of bling.jpg" alt="King of Bling" class="produkt-bild">
                         <span class="produkt-preis">85 €</span>
-                        </div></div></div>
-                   Ende Produktanzeige -->
-
-                    
-                <br>
-                
-                <div>
-                    
-                    
+                    </div>
                 </div>
             </div>
+            Ende Produktanzeige -->
         </section>
-
-       
     </main>
 
     <footer>
-        <div class="logoContainer" style="margin: 0 auto 20px auto; width: 100px;">
-            <img src="img/Logo.png" alt="FH-Pyrotechnik Logo" style="width: 100%">
-        </div>
-        <nav class="footer-nav">
-            <a href="feuerwerksverkauf.html">Verkauf</a>
+        <a href="index.html" class="footer-logo">
+            <img src="img/Logo-small.png" alt="FH-Pyrotechnik – zur Startseite" width="100" height="100" loading="lazy">
+        </a>
+        <nav class="footer-nav" aria-label="Fußzeile">
+            <a href="feuerwerksverkauf.html" aria-current="page">Verkauf</a>
             <a href="Beratung.html">Beratung</a>
             <a href="galerie.html">Galerie</a>
             <a href="contact.html">Kontakt</a>
             <a href="impressum.html">Impressum</a>
+            <a href="impressum.html#datenschutz">Datenschutz</a>
             <a href="AGB.html">AGB</a>
         </nav>
         <p>&copy; 2026 FH-Pyrotechnik | Alle Rechte vorbehalten</p>
     </footer>
 
-    <script>
-        const navToggle = document.querySelector('.mobile-menu-toggle');
-        const navList = document.querySelector('.nav-list');
-        navToggle.addEventListener('click', () => {
-            const vis = navList.getAttribute('data-visible');
-            navList.setAttribute('data-visible', vis === "false" ? "true" : "false");
-            navToggle.setAttribute('aria-expanded', vis === "false" ? "true" : "false");
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
